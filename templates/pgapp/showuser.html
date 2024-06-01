@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%; /* Adjust the width as needed */
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2; /* Light gray background for table headers */
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2; /* Light gray background for even rows */
+        }
+    </style>
+</head>
+<body>
+    <h1>USER REGISTRATION INFORMATION</h1>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Registration_id </th>
+                    <th>Username</th>
+                    <th>Email </th>
+                    <th>Mobile_number</th>
+                    <th>Sharing Person</th>
+                    <th>Price Person</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in data %}
+                <tr>
+                    <td>{{ user.Registration_id }}</td>
+                    <td>{{ user.Full_name }}</td>
+                    <td>{{ user.Email }}</td>
+                    <td>{{ user.Mobile_number }}</td>
+                    <td>{{ user.sharing_person }}</td>
+                    <td>{{ user.price_person }}</td>
+                    <td><a href="{%url 'deleteurl' user.id%}">delete</a></td></tr>
+                {% endfor %}
+                <a href="{% url 'imagemodelform'%}"><button>ADD Image(pg)</button></a>
+                <a href="{% url 'modelform'%}"><button>ADD share</button></a>
+            </tbody>
+        </table>
+        <a href="{% url 'pglogouturl' %}" >pglogout</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #080710; /* Dark background */
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .background {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .background .shape {
+            height: 200px;
+            width: 200px;
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .shape:first-child {
+            background: linear-gradient(
+                #1845ad,
+                #23a2f6
+            );
+            left: -80px;
+            top: -80px;
+        }
+
+        .shape:last-child {
+            background: linear-gradient(
+                to right,
+                #ff512f,
+                #f09819
+            );
+            right: -30px;
+            bottom: -80px;
+        }
+
+        form {
+            width: 350px;
+            padding: 40px 35px;
+            background-color: rgba(255, 255, 255, 0.13); /* Semi-transparent white background */
+            border-radius: 10px;
+            box-shadow: 0 0 40px rgba(8, 7, 16, 0.6); /* Shadow effect */
+            text-align: center;
+            backdrop-filter: blur(10px); /* Background blur effect */
+            border: 2px solid rgba(255, 255, 255, 0.1); /* White border */
+        }
+
+        h3 {
+            margin-bottom: 20px;
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 42px;
+            color: #ffffff; /* White text color */
+        }
+
+        label {
+            color: #ffffff; /* White text color */
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            text-align: left;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select {
+            width: calc(100% - 22px); /* Adjusted width to decrease space */
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 3px;
+            background-color: rgba(255, 255, 255, 0.07); /* Semi-transparent white background */
+            border: 1px solid rgba(255, 255, 255, 0.07); /* Semi-transparent white border */
+            font-size: 14px;
+            font-weight: 300;
+            color: #ffffff; /* White text color */
+        }
+
+        button[type="submit"] {
+            width: calc(100% - 22px); /* Adjusted width to decrease space */
+            padding: 15px 0;
+            margin-top: 20px; /* Decreased margin-top */
+            background-color: #ffffff; /* White button background */
+            color: #080710; /* Dark text color */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        button[type="submit"]:hover {
+            background-color: rgba(255, 255, 255, 0.27); /* Semi-transparent white background on hover */
+        }
+
+        a {
+            display: block;
+            color: #ffffff; /* White link color */
+            text-decoration: none;
+            margin-top: 20px; /* Decreased margin-top */
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        a:hover {
+            text-decoration: underline; /* Underline link on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form action="" method="post">
+        <h3>Signup Here</h3>
+        {% csrf_token %} 
+        <label for="username">Username</label>
+        <input type="text" placeholder="Enter Username" id="username" name="username">
+
+        <label for="email">Email</label>
+        <input type="email" placeholder="Email or Phone" id="email" name="email">
+        <label for="password1">Password</label>
+        <input type="password" placeholder="Password" id="password1" name="password1">
+
+        <label for="password2">Confirm Password</label>
+        <input type="password" placeholder="Confirm Password" id="password2" name="password2">
+        <label for="group">Select Group:</label>
+        <select name="group" id="group">
+            {% for group in form1 %}
+                <option value="{{ group.id }}">{{ group.name }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <button type="submit">Save</button>
+        <a href="{% url 'pgloginurl' %}">Already have an account</a>
+    </form>
+</body>
+</html>

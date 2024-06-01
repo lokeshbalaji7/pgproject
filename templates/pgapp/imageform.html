@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        table {
+            text-align: center;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    
+<div>
+    <h1>Upload Images To Pg's</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="save">
+    </form>
+</div>
+</body>
+</html>

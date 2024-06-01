@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .search{
+                position: relative;
+                left: 500px;
+            }
+            .search input[type=text]{
+                height: 30px;
+                width: 200px;
+            }
+            .search input[type=submit]{
+                height: 30px;
+                width: 60px;
+                
+            }
+            .head{
+                background-color: bisque;
+            }
+            .tab{
+                position: relative;
+                top: 60px;
+            }
+            table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #212020; /* Set border color if needed */
+        }
+
+        .dd:hover {
+            background-color: #f5f5f5;
+            cursor: pointer; /* Set hover background color if needed */
+        }
+        .end{
+            position: absolute;
+            bottom: 10px;
+        }
+        </style>
+    </head>
+    <body>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="search">
+            
+            <h2>Search Locations</h2>
+            <input type="text" name="search" placeholder="search location">&nbsp;&nbsp;&nbsp;
+            <input type="submit" value="Search">
+        </div>
+        <div class="tab">
+        </form>
+        {% if myvar == 0 %}
+        <table border="1" cellspacing="0">
+            <tr class="head">
+                <th>pg_code</th>
+                <th>pg_name</th>
+                <th>Address</th>
+                <th>Sharing</th>
+                <th>Price</th>
+                <th>vacancy</th>
+            </tr>
+            {% for pg_data in pg_data %} 
+            <tr class='dd' onclick="handleRowClick('{{pd_data.id}}')">
+                <td>{{pg_data.PG_code.PG_Code}}</td>
+                <td>{{pg_data.PG_code.PG_Name}}</td>
+                <td>{{pg_data.PG_code.Address}}</td>
+                <td>{{pg_data.Sharing}}</td>
+                <td>{{pg_data.price}}</td>
+                <td>{{pg_data.vacancies}}</td>
+                
+            </tr>
+            {%endfor%}
+        </table>
+        {%else%}
+        <table border="1" cellspacing="0">
+            <tr class="head">
+                <th>pg_code</th>
+                <th>pg_name</th>
+                <th>Address</th>
+                <th>Sharing</th>
+                <th>Price</th>
+                <th>vacancy</th>
+            </tr>
+            {% for j in pgimage_data %}
+            <tr class="dd" onclick="handleRowClick('{{j.id}}')">
+                <td>{{j.PG_code.PG_Code}}</td>
+                <td>{{j.PG_code.PG_Name}}</td>
+                <td>{{j.PG_code.Address}}</td>
+                <td>{{j.Sharing}}</td>
+                <td>{{j.price}}</td>
+                <td>{{j.vacancies}}</td>
+            /</tr>
+            {%endfor%}
+            {%endif%}
+        </table>
+    </div>
+    <div class="end">
+        <a href="{% url 'home' %}"><button>&#8678;Back</button></a>
+    
+    </div>
+        <script>
+            function handleRowClick(eno){
+                // Perform actions when a row is clicked, for example, redirect to a detail page
+
+                window.location.href = '/pg/complete/' + eno + '/';
+  // Replace with your actual URL
+            }
+        </script>
+    </body>
+</html>

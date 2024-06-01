@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #080710; /* Dark background */
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .background {
+            width: 320px; /* Decreased width */
+            height: 320px; /* Decreased height */
+            position: absolute;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: 50%;
+        }
+
+        .background .shape {
+            height: 160px; /* Decreased height */
+            width: 160px; /* Decreased width */
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .shape:first-child {
+            background: linear-gradient(
+                #1845ad,
+                #23a2f6
+            );
+            left: -40px; /* Adjusted position */
+            top: -40px; /* Adjusted position */
+        }
+
+        .shape:last-child {
+            background: linear-gradient(
+                to right,
+                #ff512f,
+                #f09819
+            );
+            right: -15px; /* Adjusted position */
+            bottom: -40px; /* Adjusted position */
+        }
+
+        form {
+            height: 420px; /* Increased height */
+            width: 300px; /* Decreased width */
+            background-color: rgba(255,255,255,0.13);
+            position: absolute;
+            transform: translate(-50%,-50%);
+            top: 50%;
+            left: 50%;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.1);
+            box-shadow: 0 0 40px rgba(8,7,16,0.6);
+            padding: 50px 35px;
+        }
+
+        form * {
+            font-family: 'Poppins', sans-serif;
+            color: #d8b6b6;
+            letter-spacing: 0.5px;
+            outline: none;
+            border: none;
+        }
+
+        form h3 {
+            font-size: 28px; /* Decreased font size */
+            font-weight: 500;
+            line-height: 38px; /* Decreased line height */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px; /* Decreased margin top */
+            font-size: 14px; /* Decreased font size */
+            font-weight: 500;
+            color: #ffffff; /* White text color */
+            text-align: left;
+        }
+
+        input {
+            display: block;
+            height: 40px; /* Decreased height */
+            width: 100%;
+            background-color: rgba(255,255,255,0.07); /* Semi-transparent white background */
+            border-radius: 3px;
+            padding: 0 10px;
+            margin-top: 6px; /* Decreased margin top */
+            font-size: 14px;
+            font-weight: 300;
+            color: #ffffff; /* White text color */
+        }
+
+        ::placeholder {
+            color: #696565;
+        }
+
+        button {
+            margin-top: 40px; /* Decreased margin top */
+            width: 100%;
+            background-color: #6f6a6a; /* White button background */
+            color: #080710; /* Dark text color */
+            padding: 12px 0; /* Decreased padding */
+            font-size: 16px; /* Decreased font size */
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        a {
+            display: block;
+            color: #c2b7b7; /* White link color */
+            text-decoration: none;
+            margin-top: 20px; /* Decreased margin top */
+            font-size: 14px; /* Decreased font size */
+            font-weight: 500;
+            text-align: center;
+        }
+
+        a:hover {
+            text-decoration: underline; /* Underline link on hover */
+        }
+
+        .social {
+            margin-top: 20px; /* Decreased margin top */
+            display: flex;
+            justify-content: center;
+        }
+
+        .social div {
+            background: red; /* Red background (change to desired color) */
+            width: 120px; /* Decreased width */
+            border-radius: 3px;
+            padding: 5px 10px; /* Decreased padding */
+            background-color: rgba(255,255,255,0.27); /* Semi-transparent white background */
+            color: #eaf0fb; /* Light text color */
+            text-align: center;
+            margin-right: 10px; /* Decreased margin right */
+        }
+
+        .social div:last-child {
+            margin-right: 0;
+        }
+
+        .social div:hover {
+            background-color: rgba(255,255,255,0.47); /* Lighter background on hover */
+        }
+
+        .social i {
+            margin-right: 4px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form method="post">
+        <h3>Login Here</h3>
+        {% csrf_token %} 
+        <label for="username">Username</label>
+        <input type="text" placeholder="Enter Username" id="username" name="uname">
+
+        <label for="password">Password</label>
+        <input type="password" placeholder="Password" id="password" name="pwd">
+
+        <button type="submit">Log In</button>
+        
+        <a href="{% url 'pgsignupurl' %}" >Create a account</a>
+    </form>
+</body>
+</html>

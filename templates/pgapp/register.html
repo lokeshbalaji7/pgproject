@@ -1,0 +1,110 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <body id='t1' style="background-image:url('{%static 'images/registerpgbg.jpeg'%}');background-repeat:no-repeat;background-size:cover;background-attachment:fixed;background-position:center;"></body>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-size: cover;
+        }
+        form{
+            width:420px;
+            background: transparent;
+            border:2px solid rgba(255, 255, 255, .2);
+            backdrop-filter: blur(7px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+            color: #fff;
+            border-radius: 10px;
+            padding:30px 20px;
+        }
+        form h2{
+            font-size: 26px;
+            text-align: center;
+        }
+        .input-box{
+            position: relative;
+            width:100%;
+            height: 50px;
+            margin: 30px 0;
+        }
+        .input-box input{
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            border:2px solid rgba(255, 255, 255, .2);
+            border-radius: 40px;
+            font-size: 16px;
+            color: #fff;
+            padding: 20px 45px 20px 20px;
+        }
+        .input-box input::placeholder {
+            color: #fff;
+        }
+        .input-box i{
+            position: absolute;
+            right: 20px;
+            top:50%;
+            transform:translateY(-50%);
+            font-size: 20px;
+        }
+        .sub{
+            /* display: flex; */
+            /* justify-content: space-between; */
+            font-size: 14.5px;
+            margin: -15px 0 15px;
+        }
+        .sub a {
+            color:#fff;
+            text-decoration: none;
+        }
+        .btn{
+            width:100%;
+            height:45px;
+            background: #fff;
+            border: none;
+            outline: none;
+            border-radius: 40px;
+            box-shadow:0 0 10px rgba(0,0,0,.1);
+            font-size:16px;
+            color:#333;
+            font-family: 600;
+        }
+        .bk{
+            justify-content: center;
+
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <h2 style="color:white;">Register to {{obj.PG_code.PG_Name}}'s hostel</h2>
+        <h2>PG ID:&ensp;{{ obj.PG_code.PG_Code }} <br><br></h2>
+        <div class="input-box">
+            <input type="text" placeholder="Enter full name" name="name"><br><br>
+        </div>
+        <div class="input-box">
+            <input type="email" placeholder="Enter email" name="email"><br><br>
+        </div>
+        <div class="input-box">
+            <input type="text" placeholder="Enter mobile number" name="mobile"><br><br>
+        </div>
+        <div class="sub">
+            <input type="submit" value="Register PG" class="btn"><br><br>
+            <a href="{% url 'showdata' %}"><button class="btn">Back</button></a>
+        </div>
+        
+    </form>
+</body>
+</html>

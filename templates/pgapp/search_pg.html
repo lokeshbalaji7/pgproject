@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search PG</title>
+    <style>
+        .container {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+
+        }
+        h1{
+            text-align: center;
+            margin-top: 100px;
+
+        }
+        form {
+            text-align: center;
+        }
+    
+    </style>
+</head>
+<body>
+    
+<div class="main">
+    <h1>Search PG by Location</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="search">
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required>&nbsp;&nbsp;&nbsp;
+        <button type="submit">Search</button>
+    </div>
+    <div class="tab">
+    </form>
+</div>
+</body>
+</html>
